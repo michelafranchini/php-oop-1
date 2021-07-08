@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+}
+
+.film {
+    height: 400px;
+    width: auto;
+    position: relative;
+    cursor: pointer;
+
+    img {
+        height: 100%;
+    }
+
+    .film_description {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+        z-index: 2;
+        width: 100%;
+        text-align: center;
+    }
+
+    &:hover .film_description {
+        visibility: visible;
+    }
+
+    &:hover::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        text-transform: uppercase; 
+        font-size: 22px;
+        color: white;
+    }
+    h5 {
+        font-size: 15px;
+        color: white;
+    }
+    p {
+        color: lightblue;
+    }
+
+}
