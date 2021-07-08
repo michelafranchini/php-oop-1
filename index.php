@@ -9,12 +9,17 @@ metodi d'istanza che abbiamo visto stamattina e create un file index.php in cui:
     include __DIR__ . "/classes/Movie.php"; 
     include __DIR__ . "/partials/text.php"; 
 
-    $movie1 = new Movie("Il Gladiatore", "2000", $text1, "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"); 
-    $movie2 = new Movie("L'Ultimo Samurai", "2003", $text2, "https://lh3.googleusercontent.com/proxy/FUbX8gC5i3RJ8_lKEainhrXJddLk9CofbbG_nlcIujI3SdjTwlQRGXS34Gi6fVcfZAfxoTMbGRlxTQKLmWwTKwDi0rvTpHprYyJFt0h859ZXLsG2IWoyhTZ4PqltsRjqp1HGo_s"); 
-    $movie3 = new Movie("L'ultimo dei Mohicani", "1992", $text3, "https://mr.comingsoon.it/imgdb/locandine/big/36517.jpg"); 
-    $movie4 = new Movie("Il Gladiatore", "2000", "Un gladiatore ammazza Commodo e poi muore", "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"); 
-    $movie5 = new Movie("Il Gladiatore", "2000", "Un gladiatore ammazza Commodo e poi muore", "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"); 
-    $movie6 = new Movie("Il Gladiatore", "2000", "Un gladiatore ammazza Commodo e poi muore", "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"); 
+    $movies = [
+        $movie1 = new Movie("Il Gladiatore", "2000", $text1, "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"), 
+        $movie2 = new Movie("L'Ultimo Samurai", "2003", $text2, "https://lh3.googleusercontent.com/proxy/FUbX8gC5i3RJ8_lKEainhrXJddLk9CofbbG_nlcIujI3SdjTwlQRGXS34Gi6fVcfZAfxoTMbGRlxTQKLmWwTKwDi0rvTpHprYyJFt0h859ZXLsG2IWoyhTZ4PqltsRjqp1HGo_s"),  
+        $movie3 = new Movie("L'ultimo dei Mohicani", "1992", $text3, "https://mr.comingsoon.it/imgdb/locandine/big/36517.jpg"), 
+        $movie4 = new Movie("The Imitation Game", "2014", $text4, "https://www.raiplay.it/cropgd/1365x2048/dl/img/2019/10/18/1571411502764_1536x2048logo.jpg") 
+    ]
+    // $movie1 = new Movie("Il Gladiatore", "2000", $text1, "https://pad.mymovies.it/filmclub/2001/01/022/locandina.jpg"); 
+    // $movie2 = new Movie("L'Ultimo Samurai", "2003", $text2, "https://lh3.googleusercontent.com/proxy/FUbX8gC5i3RJ8_lKEainhrXJddLk9CofbbG_nlcIujI3SdjTwlQRGXS34Gi6fVcfZAfxoTMbGRlxTQKLmWwTKwDi0rvTpHprYyJFt0h859ZXLsG2IWoyhTZ4PqltsRjqp1HGo_s"); 
+    // $movie3 = new Movie("L'ultimo dei Mohicani", "1992", $text3, "https://mr.comingsoon.it/imgdb/locandine/big/36517.jpg"); 
+    // $movie4 = new Movie("The Imitation Game", "2014", $text4, "https://www.raiplay.it/cropgd/1365x2048/dl/img/2019/10/18/1571411502764_1536x2048logo.jpg"); 
+
     //var_dump($movie1); 
 ?>
 
@@ -29,7 +34,9 @@ metodi d'istanza che abbiamo visto stamattina e create un file index.php in cui:
 </head>
 <body>
     <main>
-        <div class="film">
+        <!-- SOLUZIONE CON I VARI DIV -->
+
+        <!-- <div class="film">
             <img src='<?= $movie1->posterPath ?>' alt="">
             <div class="film_description">
                 <h2><?= $movie1->title; ?></h2>
@@ -53,6 +60,27 @@ metodi d'istanza che abbiamo visto stamattina e create un file index.php in cui:
                 <p><?= $movie3->lessText(200); ?></p>
             </div>
         </div>
+        <div class="film">
+            <img src='<?= $movie4->posterPath ?>' alt="">
+            <div class="film_description">
+                <h2><?= $movie4->title; ?></h2>
+                <h5><?= $movie4->year; ?></h5>
+                <p><?= $movie4->lessText(200); ?></p>
+            </div>
+        </div> -->
+
+        <!-- PROVA CON FOREACH -->
+
+        <?php foreach($movies as $movie) {?>
+            <div class="film">
+                <img src='<?= $movie->posterPath ?>' alt="">
+                <div class="film_description">
+                    <h2><?= $movie->title; ?></h2>
+                    <h5><?= $movie->year; ?></h5>
+                    <p><?= $movie->lessText(200); ?></p>
+                </div>
+            </div>
+        <?php } ?>
     
     </main>
 </body>
